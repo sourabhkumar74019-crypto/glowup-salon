@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GlowUp Salon & Spa | Book Your Look</title>
+<meta name="description" content="Hair, skin, bridal and spa services by expert stylists. Book your appointment online.">
+<style>
+:root{--p:#c2185b;--pd:#8e0f43;--bg:#fff7fa;--t:#2b1a22;--m:#85707a;--w:#fff;--g:#d4a24c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--t);background:var(--bg);line-height:1.6}
+h1,h2,h3,.logo{font-family:Georgia,'Times New Roman',serif}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;background:var(--w);box-shadow:0 2px 14px rgba(194,24,91,.08);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-size:26px;font-weight:700;color:var(--p)}
+.logo span{color:var(--g)}
+nav a{margin-left:22px;font-size:15px;color:var(--m);font-weight:500}
+nav a:hover{color:var(--p)}
+.btn{display:inline-block;background:var(--p);color:#fff;padding:13px 28px;border-radius:30px;font-weight:600;border:0;cursor:pointer;font-size:15px;transition:.2s}
+.btn:hover{background:var(--pd);transform:translateY(-1px)}
+.btn.alt{background:#fff;color:var(--p);border:2px solid var(--p)}
+.hero{padding:76px 0;background:linear-gradient(135deg,#fde3ee,#fff7fa)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.tag{display:inline-block;background:#fbd0e1;color:var(--pd);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;margin-bottom:16px}
+h1{font-size:48px;line-height:1.15;margin-bottom:16px}
+h1 span{color:var(--p)}
+.hero p{color:var(--m);font-size:18px;margin-bottom:26px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{height:380px;border-radius:200px 200px 24px 24px;background:linear-gradient(160deg,#f48fb1,#c2185b);display:flex;align-items:center;justify-content:center;font-size:120px;box-shadow:0 24px 60px rgba(194,24,91,.25)}
+.offer{background:var(--p);color:#fff;text-align:center;padding:14px;font-weight:600}
+section{padding:76px 0}
+.title{text-align:center;margin-bottom:42px}
+.title small{color:var(--g);letter-spacing:3px;font-size:13px;font-weight:600}
+.title h2{font-size:36px;margin-top:4px}
+.title p{color:var(--m)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.card{background:var(--w);padding:28px;border-radius:18px;box-shadow:0 8px 28px rgba(194,24,91,.07);transition:.25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(194,24,91,.16)}
+.ic{font-size:36px;margin-bottom:8px}
+.card h3{margin-bottom:8px;font-size:22px}
+.card li{list-style:none;display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #f0d5df;font-size:15px;color:var(--m)}
+.card li:last-child{border:0}
+.card li b{color:var(--p)}
+.pack{background:linear-gradient(135deg,#fff,#fde8f0);border:2px solid #f8c6d9;position:relative}
+.pack .badge{position:absolute;top:-12px;right:18px;background:var(--g);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px}
+.pack .pr{font-size:30px;font-weight:700;color:var(--p);margin:8px 0}
+.pack p{color:var(--m);font-size:14px}
+.team{text-align:center}
+.face{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#f48fb1,#c2185b);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-size:44px}
+.team small{color:var(--m)}
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.gal div{height:170px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:48px;background:linear-gradient(135deg,#fbd0e1,#f48fb1)}
+.stars{color:var(--g);letter-spacing:3px}
+.rev p{font-style:italic;margin:8px 0;color:var(--m)}
+.book{background:linear-gradient(135deg,var(--p),var(--pd));color:#fff}
+.book .title p{color:#f8cfe0}
+.book .title small{color:#ffd9a0}
+form{background:var(--w);color:var(--t);max-width:640px;margin:0 auto;padding:32px;border-radius:20px;display:grid;gap:14px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+input,select,textarea{width:100%;padding:13px 14px;border:1.5px solid #f1d8e2;border-radius:12px;font-size:15px;font-family:inherit}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--p)}
+.map{background:#fbd0e1;border-radius:18px;display:flex;align-items:center;justify-content:center;min-height:200px;color:var(--pd);font-weight:600;text-align:center;padding:20px}
+footer{background:#2b1220;color:#c9a9b8;text-align:center;padding:26px 0;font-size:14px}
+.wa{position:fixed;right:18px;bottom:18px;background:#25d366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;box-shadow:0 8px 20px rgba(0,0,0,.25);z-index:60}
+.call{position:fixed;left:18px;bottom:18px;background:var(--p);color:#fff;padding:14px 20px;border-radius:30px;font-weight:600;z-index:60;display:none}
+@media(max-width:760px){
+ nav{display:none}
+ .hero .wrap{grid-template-columns:1fr}
+ .hero-art{height:260px;font-size:80px}
+ h1{font-size:34px}
+ .row{grid-template-columns:1fr}
+ .call{display:block}
+ section{padding:52px 0}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap nav">
+  <a class="logo" href="#">Glow<span>Up</span></a>
+  <nav>
+   <a href="#services">Services</a>
+   <a href="#packages">Packages</a>
+   <a href="#team">Team</a>
+   <a href="#gallery">Gallery</a>
+   <a href="#contact">Contact</a>
+  </nav>
+  <a class="btn" href="#book">Book Now</a>
+ </div>
+</header>
+
+<div class="offer">First visit offer: Flat 20% off on any service. Book online today!</div>
+
+<div class="hero">
+ <div class="wrap">
+  <div>
+   <span class="tag">Hair | Skin | Bridal | Spa</span>
+   <h1>Look good. Feel <span>amazing.</span></h1>
+   <p>Expert stylists, premium products and a relaxing space made just for you. Book your appointment in 30 seconds.</p>
+   <div class="cta">
+    <a class="btn" href="#book">Book Appointment</a>
+    <a class="btn alt" href="#services">View Services</a>
+   </div>
+  </div>
+  <div class="hero-art">&#128135;&#8205;&#9792;&#65039;</div>
+ </div>
+</div>
+
+<section id="services">
+ <div class="wrap">
+  <div class="title"><small>WHAT WE DO</small><h2>Our Services</h2><p>Transparent pricing, no surprises</p></div>
+  <div class="grid">
+   <div class="card"><div class="ic">&#9986;&#65039;</div><h3>Hair</h3><ul>
+    <li>Haircut <b>Rs 300</b></li><li>Hair Spa <b>Rs 800</b></li><li>Hair Colour <b>Rs 1,500</b></li><li>Smoothening <b>Rs 3,500</b></li></ul></div>
+   <div class="card"><div class="ic">&#10024;</div><h3>Skin</h3><ul>
+    <li>Cleanup <b>Rs 500</b></li><li>Facial <b>Rs 1,200</b></li><li>De-tan <b>Rs 700</b></li><li>Hydra Facial <b>Rs 2,500</b></li></ul></div>
+   <div class="card"><div class="ic">&#128133;</div><h3>Nails and Waxing</h3><ul>
+    <li>Manicure <b>Rs 500</b></li><li>Pedicure <b>Rs 700</b></li><li>Full Arms Wax <b>Rs 400</b></li><li>Threading <b>Rs 50</b></li></ul></div>
+   <div class="card"><div class="ic">&#128134;&#8205;&#9792;&#65039;</div><h3>Spa and Massage</h3><ul>
+    <li>Head Massage <b>Rs 400</b></li><li>Body Massage <b>Rs 1,800</b></li><li>Aroma Spa <b>Rs 2,500</b></li></ul></div>
+  </div>
+ </div>
+</section>
+
+<section id="packages" style="background:#fff">
+ <div class="wrap">
+  <div class="title"><small>SAVE MORE</small><h2>Special Packages</h2></div>
+  <div class="grid">
+   <div class="card pack"><h3>Glow Package</h3><div class="pr">Rs 1,999</div><p>Haircut + Facial + Manicure + Head Massage</p></div>
+   <div class="card pack"><span class="badge">POPULAR</span><h3>Bridal Package</h3><div class="pr">Rs 14,999</div><p>Bridal makeup, hair styling, facial, mehendi prep and pre-bridal care</p></div>
+   <div class="card pack"><h3>Party Ready</h3><div class="pr">Rs 2,499</div><p>Hair styling + Makeup + Nail art</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="team">
+ <div class="wrap">
+  <div class="title"><small>EXPERTS</small><h2>Meet Our Stylists</h2></div>
+  <div class="grid">
+   <div class="card team"><div class="face">&#128135;&#8205;&#9792;&#65039;</div><h3>Simran</h3><small>Senior Hair Stylist | 10 yrs</small></div>
+   <div class="card team"><div class="face">&#128129;&#8205;&#9792;&#65039;</div><h3>Pooja</h3><small>Makeup Artist | 8 yrs</small></div>
+   <div class="card team"><div class="face">&#128134;&#8205;&#9792;&#65039;</div><h3>Anjali</h3><small>Skin Specialist | 7 yrs</small></div>
+  </div>
+ </div>
+</section>
+
+<section id="gallery" style="background:#fff">
+ <div class="wrap">
+  <div class="title"><small>OUR WORK</small><h2>Gallery</h2></div>
+  <div class="gal"><div>&#128135;&#8205;&#9792;&#65039;</div><div>&#128132;</div><div>&#128133;</div><div>&#128134;&#8205;&#9792;&#65039;</div></div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <div class="title"><small>LOVE FROM CLIENTS</small><h2>Reviews</h2></div>
+  <div class="grid">
+   <div class="card rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Best haircut I've had in years. Clean salon and very professional staff."</p><b>Ritika S.</b></div>
+   <div class="card rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"My bridal makeup was flawless. Everyone loved it!"</p><b>Shruti M.</b></div>
+   <div class="card rev"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p>"Relaxing spa and fair prices. Booking online is so easy."</p><b>Kavya N.</b></div>
+  </div>
+ </div>
+</section>
+
+<section class="book" id="book">
+ <div class="wrap">
+  <div class="title"><small>APPOINTMENT</small><h2>Book Your Slot</h2><p>Fill the form and we will confirm on WhatsApp</p></div>
+  <form id="bf">
+   <div class="row">
+    <input id="n" placeholder="Your name" required>
+    <input id="p" type="tel" placeholder="Phone number" required>
+   </div>
+   <div class="row">
+    <input id="d" type="date" required>
+    <select id="t">
+     <option>10:00 AM</option><option>11:00 AM</option><option>12:00 PM</option>
+     <option>02:00 PM</option><option>04:00 PM</option><option>06:00 PM</option>
+    </select>
+   </div>
+   <select id="s">
+    <option>Haircut</option><option>Hair Spa</option><option>Hair Colour</option>
+    <option>Facial</option><option>Manicure / Pedicure</option><option>Waxing</option>
+    <option>Massage / Spa</option><option>Glow Package</option><option>Bridal Package</option>
+   </select>
+   <textarea id="m" rows="3" placeholder="Any request (optional)"></textarea>
+   <button class="btn" type="submit">Confirm on WhatsApp</button>
+  </form>
+ </div>
+</section>
+
+<section id="contact">
+ <div class="wrap">
+  <div class="title"><small>VISIT US</small><h2>Contact</h2></div>
+  <div class="grid">
+   <div class="card">
+    <h3>GlowUp Salon & Spa</h3>
+    <p>8 Fashion Street, Your City, 000000</p><br>
+    <p><b>Timings:</b> Mon to Sun, 10 AM to 8 PM<br><b>Phone:</b> +91 00000 00000</p>
+   </div>
+   <div class="map">Add your Google Map embed here</div>
+  </div>
+ </div>
+</section>
+
+<footer>&copy; 2026 GlowUp Salon & Spa. All rights reserved.</footer>
+
+<a class="wa" href="https://wa.me/910000000000" aria-label="WhatsApp">&#128172;</a>
+<a class="call" href="tel:+910000000000">Call Now</a>
+
+<script>
+// CHANGE THIS to the salon WhatsApp number (country code + number, no + or spaces)
+var WA_NUMBER = "910000000000";
+document.getElementById("d").min = new Date().toISOString().split("T")[0];
+document.getElementById("bf").addEventListener("submit", function(e){
+  e.preventDefault();
+  var msg = "New Salon Appointment%0AName: " + encodeURIComponent(n.value) +
+    "%0APhone: " + encodeURIComponent(p.value) +
+    "%0ADate: " + d.value + "%0ATime: " + encodeURIComponent(t.value) +
+    "%0AService: " + encodeURIComponent(s.value) +
+    "%0ARequest: " + encodeURIComponent(m.value || "N/A");
+  window.open("https://wa.me/" + WA_NUMBER + "?text=" + msg, "_blank");
+});
+</script>
+</body>
+</html>
