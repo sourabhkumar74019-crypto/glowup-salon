@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Aura — Beauty & Salon Studio</title>
+    
+    <!-- Google Fonts: Script & Clean Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#161616',
+                        cardBg: '#1E1E1E',
+                        goldAccent: '#D4B07A',
+                        goldLight: '#E5C697',
+                        goldDark: '#B38E58',
+                    },
+                    fontFamily: {
+                        script: ['"Great Vibes"', 'cursive'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #161616;
+            color: #EAEAEA;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Slanted Ribbon Tags matching the reference */
+        .ribbon-left {
+            background-color: #D4B07A;
+            color: #161616;
+            clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
+            padding: 8px 36px 8px 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .ribbon-right {
+            background-color: #D4B07A;
+            color: #161616;
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+            padding: 8px 24px 8px 36px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        /* Watermark Background Text */
+        .watermark-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.03);
+            user-select: none;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        /* Custom Gold Border Frame */
+        .gold-frame {
+            position: relative;
+        }
+        .gold-frame::after {
+            content: '';
+            position: absolute;
+            inset: -10px;
+            border: 1px solid #D4B07A;
+            border-radius: 16px;
+            pointer-events: none;
+            transition: transform 0.3s ease;
+        }
+        .gold-frame:hover::after {
+            transform: scale(1.02);
+        }
+
+        /* Map Dark Filter */
+        .dark-map {
+            filter: grayscale(100%) invert(92%) contrast(85%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-goldAccent selection:text-darkBg">
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-darkBg/90 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#main" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full bg-goldAccent flex items-center justify-center text-darkBg font-bold text-lg shadow-md">
+                    <i class="fa-solid fa-spa"></i>
+                </div>
+                <div>
+                    <span class="font-script text-3xl text-goldAccent block leading-none">Beauty & Salon</span>
+                    <span class="text-[10px] tracking-[0.25em] text-gray-400 uppercase">Luxury Studio</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest font-medium text-gray-300">
+                <a href="#main" class="hover:text-goldAccent transition">Home</a>
+                <a href="#about" class="hover:text-goldAccent transition">About</a>
+                <a href="#services" class="hover:text-goldAccent transition">Services</a>
+                <a href="#rates" class="hover:text-goldAccent transition">Rates</a>
+                <a href="#gallery" class="hover:text-goldAccent transition">Gallery</a>
+                <a href="#contact" class="hover:text-goldAccent transition">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-goldAccent text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden bg-cardBg border-b border-white/10 px-6 py-4 space-y-3 text-sm uppercase tracking-wider">
+            <a href="#main" class="block py-1 hover:text-goldAccent">Home</a>
+            <a href="#about" class="block py-1 hover:text-goldAccent">About</a>
+            <a href="#services" class="block py-1 hover:text-goldAccent">Services</a>
+            <a href="#rates" class="block py-1 hover:text-goldAccent">Rates</a>
+            <a href="#gallery" class="block py-1 hover:text-goldAccent">Gallery</a>
+            <a href="#contact" class="block py-1 hover:text-goldAccent">Contact</a>
+        </div>
+    </header>
+
+    <!-- HERO / MAIN SECTION -->
+    <section id="main" class="relative min-h-[88vh] flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Copyright-Free Unsplash Background Image -->
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=85" 
+             alt="Luxury Beauty Salon Interior" 
+             class="absolute inset-0 w-full h-full object-cover object-center opacity-45">
+        <div class="absolute inset-0 bg-gradient-to-b from-darkBg/70 via-darkBg/50 to-darkBg"></div>
+
+        <!-- Top Left Ribbon -->
+        <div class="absolute top-24 left-0 z-20">
+            <span class="ribbon-left">Main</span>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-4 max-w-3xl mx-auto mt-8">
+            <p class="text-goldAccent uppercase tracking-[0.35em] text-xs sm:text-sm mb-3 font-medium">Welcome to Elegance</p>
+            <h1 class="font-script text-6xl sm:text-7xl md:text-8xl text-white drop-shadow-lg mb-6">
+                Our Beauty Center
+            </h1>
+            <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto mb-8 leading-relaxed font-light">
+                Experience bespoke hair styling, rejuvenating skin rituals, and luxury bridal makeovers crafted by certified beauty artists.
+            </p>
+            <button onclick="openBookingModal('General Appointment')" 
+                    class="bg-white text-darkBg hover:bg-goldAccent hover:text-darkBg font-semibold text-xs sm:text-sm uppercase tracking-widest px-8 py-3.5 rounded-sm shadow-xl transition duration-300">
+                Book an Appointment
+            </button>
+        </div>
+    </section>
+
+    <!-- ABOUT SALON SECTION -->
+    <section id="about" class="relative py-20 border-t border-white/5">
+        <!-- Top Right Ribbon -->
+        <div class="flex justify-end mb-10">
+            <span class="ribbon-right">About Salon</span>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+            <!-- Watermark -->
+            <span class="watermark-text text-7xl sm:text-8xl absolute -left-8 top-0 -rotate-90 hidden lg:block">
+                ABOUT US
+            </span>
+
+            <!-- Left Text -->
+            <div class="space-y-5 z-10">
+                <h2 class="font-script text-5xl text-goldAccent">Our History</h2>
+                <p class="text-gray-300 text-sm leading-7 font-light">
+                    Founded with a vision to blend timeless beauty traditions with modern dermatological care, our studio has been a sanctuary for self-care and confidence. Every treatment is tailored to your unique skin tone, hair texture, and personal style.
+                </p>
+                <p class="text-gray-400 text-sm leading-7 font-light">
+                    We exclusively use botanical, cruelty-free, and salon-grade international products so you leave glowing inside and out.
+                </p>
+                <div class="pt-2 flex items-center gap-8 border-t border-white/10">
+                    <div>
+                        <span class="text-2xl font-serif text-goldAccent font-bold">10+</span>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider">Years Experience</p>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-serif text-goldAccent font-bold">4.9★</span>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider">Client Rating</p>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-serif text-goldAccent font-bold">25+</span>
+                        <p class="text-xs text-gray-400 uppercase tracking-wider">Expert Stylists</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Framed Model Image -->
+            <div class="flex justify-center">
+                <div class="gold-frame w-72 sm:w-80 h-96 rounded-2xl">
+                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=800&q=85" 
+                         alt="Salon Portrait Model" 
+                         class="w-full h-full object-cover rounded-2xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKIN CARE FULL BANNER -->
+    <section class="relative h-80 sm:h-96 my-8 overflow-hidden flex items-center">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1600&q=85" 
+             alt="Luxury Skin Care Facial" 
+             class="absolute inset-0 w-full h-full object-cover object-left opacity-65">
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-darkBg/70 to-darkBg"></div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 w-full flex justify-end">
+            <div class="text-right max-w-md">
+                <h2 class="font-script text-6xl sm:text-7xl text-goldAccent mb-2">Skin Care</h2>
+                <p class="text-gray-300 text-xs sm:text-sm tracking-wide">
+                    Hydra-glow facials, organic botanical peels & anti-aging therapy tailored for radiant skin.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES STAGGERED GRID SECTION -->
+    <section id="services" class="relative py-16">
+        <!-- Left Ribbon -->
+        <div class="mb-8">
+            <span class="ribbon-left">Services</span>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center relative mb-14">
+                <span class="watermark-text text-6xl sm:text-8xl uppercase block">Services</span>
+                <h2 class="font-script text-4xl sm:text-5xl text-goldAccent -mt-8 sm:-mt-12 relative z-10">
+                    Explore Our Services
+                </h2>
+            </div>
+
+            <!-- 2-Column Staggered Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Card 01 -->
+                <div class="border border-goldAccent/50 p-3 bg-cardBg group">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=800&q=85" 
+                             alt="Professional Makeup" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute bottom-12 left-4 text-3xl font-bold text-white/90">01</span>
+                        <div class="absolute bottom-3 left-4 right-4 bg-goldAccent text-darkBg px-4 py-2 flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+                            <span>Professional Makeup</span>
+                            <button onclick="openBookingModal('Professional Makeup')" class="underline hover:opacity-75">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 02 -->
+                <div class="border border-goldAccent/50 p-3 bg-cardBg group md:mt-12">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=85" 
+                             alt="Bridal Hair Styling" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute bottom-12 left-4 text-3xl font-bold text-white/90">02</span>
+                        <div class="absolute bottom-3 left-4 right-4 bg-goldAccent text-darkBg px-4 py-2 flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+                            <span>Bridal & Hair Styling</span>
+                            <button onclick="openBookingModal('Bridal & Hair Styling')" class="underline hover:opacity-75">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 03 -->
+                <div class="border border-goldAccent/50 p-3 bg-cardBg group">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=85" 
+                             alt="Glow Skin Treatment" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute bottom-12 left-4 text-3xl font-bold text-white/90">03</span>
+                        <div class="absolute bottom-3 left-4 right-4 bg-goldAccent text-darkBg px-4 py-2 flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+                            <span>Glow Facial & Spa</span>
+                            <button onclick="openBookingModal('Glow Facial & Spa')" class="underline hover:opacity-75">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 04 -->
+                <div class="border border-goldAccent/50 p-3 bg-cardBg group md:mt-12">
+                    <div class="relative h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=85" 
+                             alt="Nail Art & Manicure" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                        <span class="absolute bottom-12 left-4 text-3xl font-bold text-white/90">04</span>
+                        <div class="absolute bottom-3 left-4 right-4 bg-goldAccent text-darkBg px-4 py-2 flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+                            <span>Nail Art & Manicure</span>
+                            <button onclick="openBookingModal('Nail Art & Manicure')" class="underline hover:opacity-75">Explore →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OTHER SERVICES BANNER -->
+    <section class="relative py-20 my-10 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1600&q=85" 
+             alt="Salon Chairs Interior" 
+             class="absolute inset-0 w-full h-full object-cover opacity-25">
+        <div class="absolute inset-0 bg-darkBg/75"></div>
+
+        <!-- Right Ribbon -->
+        <div class="relative z-10 flex justify-end mb-12">
+            <span class="ribbon-right">Other Services</span>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <div class="p-6">
+                <i class="fa-solid fa-wand-magic-sparkles text-4xl text-goldAccent mb-4"></i>
+                <h3 class="text-lg font-semibold text-white mb-2">Highlights & Balayage</h3>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Ammonia-free global hair coloring, dimensional balayage, and glossy keratin smoothing.
+                </p>
+            </div>
+            <div class="p-6 border-y md:border-y-0 md:border-x border-white/10">
+                <i class="fa-solid fa-pump-soap text-4xl text-goldAccent mb-4"></i>
+                <h3 class="text-lg font-semibold text-white mb-2">Deep Hair Spa</h3>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Moroccan argan oil scalp therapy and protein repair masks for silky, frizz-free volume.
+                </p>
+            </div>
+            <div class="p-6">
+                <i class="fa-solid fa-scissors text-4xl text-goldAccent mb-4"></i>
+                <h3 class="text-lg font-semibold text-white mb-2">Precision Haircut</h3>
+                <p class="text-xs text-gray-400 leading-relaxed">
+                    Face-framing layers, textured bobs, and customized styling by senior creative directors.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HAIRCUT RATES SECTION -->
+    <section id="rates" class="relative py-16">
+        <div class="mb-10">
+            <span class="ribbon-left">Haircut Rates</span>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+            <!-- Left Vertical Cosmetics Image -->
+            <div class="md:col-span-5 border border-dashed border-goldAccent/50 p-3">
+                <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=85" 
+                     alt="Makeup Brushes and Palette" 
+                     class="w-full h-96 object-cover">
+            </div>
+
+            <!-- Right 2x2 Price Boxes -->
+            <div class="md:col-span-7">
+                <div class="text-right mb-6">
+                    <span class="watermark-text text-5xl block">PRICES</span>
+                    <h2 class="font-script text-4xl text-goldAccent -mt-7">Haircut & Styling Prices</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-cardBg border border-white/5 hover:border-goldAccent/50 p-6 text-center transition">
+                        <i class="fa-solid fa-scissors text-2xl text-goldAccent mb-3"></i>
+                        <h4 class="text-sm font-semibold text-white">Hair Cut With Blow Dry</h4>
+                        <p class="text-goldAccent font-bold text-lg mt-2">₹799</p>
+                    </div>
+                    <div class="bg-cardBg border border-white/5 hover:border-goldAccent/50 p-6 text-center transition">
+                        <i class="fa-solid fa-wind text-2xl text-goldAccent mb-3"></i>
+                        <h4 class="text-sm font-semibold text-white">Blow Dry & Soft Curls</h4>
+                        <p class="text-goldAccent font-bold text-lg mt-2">₹649</p>
+                    </div>
+                    <div class="bg-cardBg border border-white/5 hover:border-goldAccent/50 p-6 text-center transition">
+                        <i class="fa-solid fa-palette text-2xl text-goldAccent mb-3"></i>
+                        <h4 class="text-sm font-semibold text-white">Color & Highlights</h4>
+                        <p class="text-goldAccent font-bold text-lg mt-2">₹2,499</p>
+                    </div>
+                    <div class="bg-cardBg border border-white/5 hover:border-goldAccent/50 p-6 text-center transition">
+                        <i class="fa-solid fa-droplet text-2xl text-goldAccent mb-3"></i>
+                        <h4 class="text-sm font-semibold text-white">Luxury Shampoo & Set</h4>
+                        <p class="text-goldAccent font-bold text-lg mt-2">₹499</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="relative py-16">
+        <div class="flex justify-end mb-8">
+            <span class="ribbon-right">Testimonial</span>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <span class="watermark-text text-5xl sm:text-7xl block">THEY SAID</span>
+                <h2 class="font-script text-4xl text-goldAccent -mt-8">Client Testimonials</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Gold Testimonial Card 1 -->
+                <div class="bg-goldAccent text-darkBg p-8 rounded-sm relative shadow-lg">
+                    <span class="absolute top-3 right-4 bg-white text-darkBg w-8 h-8 flex items-center justify-center font-serif text-xl font-bold shadow">
+                        ”
+                    </span>
+                    <p class="text-xs sm:text-sm leading-relaxed font-medium mb-4">
+                        "Booked my bridal makeup and pre-bridal skin ritual here. The artists understood my exact skin tone and created a natural, luminous finish that lasted all night!"
+                    </p>
+                    <p class="font-script text-2xl text-right font-bold">— Ananya Sharma</p>
+                </div>
+
+                <!-- Gold Testimonial Card 2 -->
+                <div class="bg-goldAccent text-darkBg p-8 rounded-sm relative shadow-lg">
+                    <span class="absolute top-3 right-4 bg-white text-darkBg w-8 h-8 flex items-center justify-center font-serif text-xl font-bold shadow">
+                        ”
+                    </span>
+                    <p class="text-xs sm:text-sm leading-relaxed font-medium mb-4">
+                        "Best balayage and hair spa experience in town. The ambience is super relaxing, hygienic, and their stylists genuinely listen before picking up the scissors."
+                    </p>
+                    <p class="font-script text-2xl text-right font-bold">— Riya Verma</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKING HOURS & LIVE CLOCK -->
+    <section class="relative py-16 border-t border-white/5">
+        <div class="mb-8">
+            <span class="ribbon-left">Working Hours</span>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6">
+            <span class="watermark-text text-5xl sm:text-7xl block">WORKING</span>
+            <h2 class="font-script text-4xl text-goldAccent -mt-8 mb-8">Working Hours</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Schedule Table -->
+                <div class="space-y-4 text-xs uppercase tracking-widest">
+                    <div class="flex justify-between pb-3 border-b border-white/15">
+                        <span class="text-gray-300 font-semibold">Monday – Friday</span>
+                        <span class="text-goldAccent">10:00 AM – 08:30 PM</span>
+                    </div>
+                    <div class="flex justify-between pb-3 border-b border-white/15">
+                        <span class="text-gray-300 font-semibold">Saturday</span>
+                        <span class="text-goldAccent">10:00 AM – 09:30 PM</span>
+                    </div>
+                    <div class="flex justify-between pb-3 border-b border-white/15">
+                        <span class="text-gray-300 font-semibold">Sunday</span>
+                        <span class="text-goldAccent">11:00 AM – 07:00 PM</span>
+                    </div>
+                </div>
+
+                <!-- Live Digital Date/Time Box matching reference -->
+                <div class="bg-cardBg border border-white/10 p-6 rounded-sm text-center md:text-left">
+                    <p id="liveDate" class="text-xs uppercase tracking-[0.25em] text-gray-400 mb-2">WEDNESDAY, NOVEMBER 25, 2026</p>
+                    <p id="liveClock" class="text-2xl sm:text-3xl font-mono tracking-widest text-goldAccent font-semibold">
+                        10 : 30 : 00
+                    </p>
+                    <p class="text-[11px] text-emerald-400 mt-2 flex items-center justify-center md:justify-start gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Studio Open — Walk-ins & Appointments Welcome
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="relative py-16">
+        <div class="flex justify-end mb-8">
+            <span class="ribbon-right">Gallery</span>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <span class="watermark-text text-6xl sm:text-8xl block">BEAUTY</span>
+                <h2 class="font-script text-4xl sm:text-5xl text-goldAccent -mt-9">Gallery</h2>
+            </div>
+
+            <!-- 3-Column Bento Gallery matching reference -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Left Column (2 Stacked) -->
+                <div class="space-y-4">
+                    <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=600&q=85" 
+                         alt="Makeup Palette" class="w-full h-48 object-cover hover:opacity-85 transition">
+                    <img src="https://images.unsplash.com/photo-1526045478516-99145907023c?auto=format&fit=crop&w=600&q=85" 
+                         alt="Lipstick & Glow" class="w-full h-48 object-cover hover:opacity-85 transition">
+                </div>
+
+                <!-- Center Tall Feature Photo -->
+                <div>
+                    <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=700&q=85" 
+                         alt="Hair & Beauty Editorial" class="w-full h-64 md:h-[400px] object-cover hover:opacity-85 transition">
+                </div>
+
+                <!-- Right Column (2 Stacked) -->
+                <div class="space-y-4">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=85" 
+                         alt="Hair Styling" class="w-full h-48 object-cover hover:opacity-85 transition">
+                    <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=600&q=85" 
+                         alt="Facial Spa" class="w-full h-48 object-cover hover:opacity-85 transition">
+                </div>
+            </div>
+
+            <!-- Partner Luxury Brand Logos -->
+            <div class="mt-14 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center text-gray-500 font-serif tracking-widest text-lg uppercase">
+                <span>Davines</span>
+                <span>Aēsop.</span>
+                <span>Milk_Shake</span>
+                <span>Kérastase</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & MAP SECTION -->
+    <section id="contact" class="relative pt-12">
+        <div class="mb-6">
+            <span class="ribbon-left">Contact</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 bg-cardBg">
+            <!-- Left Dark Styled Map -->
+            <div class="h-80 md:h-auto min-h-[340px] relative overflow-hidden">
+                <iframe 
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=77.2050%2C28.6250%2C77.2300%2C28.6400&layer=mapnik" 
+                    class="w-full h-full border-0 dark-map" 
+                    loading="lazy"
+                    title="Salon Location Map">
+                </iframe>
+            </div>
+
+            <!-- Right Contact Form -->
+            <div class="p-8 sm:p-12 relative">
+                <span class="watermark-text text-6xl absolute right-6 top-6">CONTACT</span>
+                <h2 class="font-script text-4xl text-goldAccent mb-6 relative z-10">Get In Touch</h2>
+
+                <form id="contactForm" class="space-y-4 relative z-10">
+                    <input type="text" required placeholder="Your Name" 
+                           class="w-full bg-transparent border border-goldAccent/50 px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-goldAccent">
+                    <input type="tel" required placeholder="Your Phone / Email" 
+                           class="w-full bg-transparent border border-goldAccent/50 px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-goldAccent">
+                    <textarea rows="3" required placeholder="Service or Message" 
+                              class="w-full bg-transparent border border-goldAccent/50 px-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-goldAccent"></textarea>
+                    <button type="submit" 
+                            class="bg-white text-darkBg hover:bg-goldAccent font-bold text-xs uppercase tracking-widest px-6 py-3 transition">
+                        Send Message
+                    </button>
+                    <p id="formSuccess" class="hidden text-xs text-emerald-400 pt-2">
+                        Thank you! Our salon desk will confirm your message shortly.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-darkBg py-6 text-center border-t border-white/10 text-xs text-gray-500">
+        <p>© 2026 Beauty & Salon Luxury Studio. All Rights Reserved.</p>
+    </footer>
+
+    <!-- APPOINTMENT MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-cardBg border border-goldAccent/60 max-w-md w-full p-6 sm:p-8 relative">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-script text-4xl text-goldAccent mb-1">Book Appointment</h3>
+            <p class="text-xs text-gray-400 mb-5">Reserve your luxury session in 30 seconds.</p>
+            
+            <form id="modalForm" class="space-y-4">
+                <input type="text" id="selectedServiceInput" readonly 
+                       class="w-full bg-darkBg border border-goldAccent/40 px-4 py-2.5 text-xs text-goldAccent font-semibold uppercase tracking-wider">
+                <input type="text" required placeholder="Full Name" 
+                       class="w-full bg-transparent border border-white/20 px-4 py-2.5 text-sm text-white focus:border-goldAccent focus:outline-none">
+                <input type="tel" required placeholder="Mobile Number (+91)" 
+                       class="w-full bg-transparent border border-white/20 px-4 py-2.5 text-sm text-white focus:border-goldAccent focus:outline-none">
+                <input type="date" required 
+                       class="w-full bg-darkBg border border-white/20 px-4 py-2.5 text-sm text-gray-300 focus:border-goldAccent focus:outline-none">
+                <button type="submit" 
+                        class="w-full bg-goldAccent text-darkBg font-bold text-xs uppercase tracking-widest py-3 hover:bg-goldLight transition">
+                    Confirm Booking
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Live Clock & Date
+        function updateClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('liveDate').textContent = now.toLocaleDateString('en-US', options).toUpperCase();
+            
+            const hrs = String(now.getHours()).padStart(2, '0');
+            const mins = String(now.getMinutes()).padStart(2, '0');
+            const secs = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('liveClock').textContent = `${hrs} : ${mins} : ${secs}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Booking Modal Controls
+        const modal = document.getElementById('bookingModal');
+        const serviceInput = document.getElementById('selectedServiceInput');
+
+        function openBookingModal(serviceName) {
+            serviceInput.value = 'Service: ' + serviceName;
+            modal.classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            modal.classList.add('hidden');
+        }
+
+        // Form Submissions
+        document.getElementById('modalForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Appointment booked! Hum aapko WhatsApp/Call par timing confirm kar denge.');
+            closeBookingModal();
+            e.target.reset();
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.getElementById('formSuccess').classList.remove('hidden');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
