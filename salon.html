@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GlowUp Salon &amp; Spa | Book Your Experience</title>
+<meta name="description" content="Hair, skin and bridal artistry in a serene space. Book your appointment online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* 60-30-10 colour rule
+   60% pink  : page, header, hero, services, gallery, booking, footer
+   30% cream : cards, about, contact, inputs
+   10% green : buttons, prices, icons, selected states */
+:root{--pink:#efd3c9;--pink2:#e3bbad;--cream:#faf4ea;--cream2:#f6ecdf;--accent:#964a3a;--accent2:#7a3a2d;--ink:#3b2a26;--mute:#7a5e55;--line:#dcb3a4;--w:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Jost,system-ui,sans-serif;background:var(--pink);color:var(--ink);line-height:1.65;font-size:16px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.logo{font-family:'Playfair Display',Georgia,serif;font-weight:500}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+svg.i{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.12em}
+
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#f3d9cf,#e0b3a2);background-size:cover;background-position:center}
+.ph::after{content:"Add photo\A " attr(data-src);white-space:pre;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;font-weight:500;color:#8a4d3e;opacity:.75;padding:10px;z-index:0}
+.ph.on::after{display:none}
+
+header{position:sticky;top:0;z-index:50;background:var(--pink);border-bottom:1px solid var(--line)}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:72px;gap:16px}
+.logo{font-size:30px;font-style:italic;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
+nav{display:flex;gap:30px}
+nav a{font-size:15px;font-weight:500;padding:4px 0;border-bottom:1.5px solid transparent}
+nav a:hover,nav a.on{color:var(--accent);border-color:var(--accent)}
+.right{justify-self:end;display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;padding:14px 28px;border-radius:999px;font-size:15px;font-weight:500;letter-spacing:.02em;border:0;cursor:pointer;font-family:inherit;transition:.2s}
+.btn:hover{background:var(--accent2)}
+.btn.sm{padding:11px 20px;font-size:14px}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:50%;width:40px;height:40px;font-size:20px;color:var(--accent);cursor:pointer}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* hero */
+.hero{position:relative;min-height:540px;display:flex;align-items:center}
+.hero .ph{position:absolute;inset:0}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(239,211,201,.96) 0%,rgba(239,211,201,.8) 40%,rgba(239,211,201,0) 72%)}
+.hero .wrap{position:relative;z-index:2;width:100%}
+.hero h1{font-size:clamp(44px,7vw,84px);line-height:1;font-weight:500;letter-spacing:-.02em;color:var(--ink);max-width:8ch}
+.hero p{margin:20px 0 30px;max-width:30ch;font-family:'Playfair Display',serif;font-style:italic;font-size:22px;line-height:1.4;color:var(--ink)}
+
+section{padding:80px 0}
+.title{text-align:center;margin-bottom:40px}
+.title h2{font-size:clamp(30px,3.6vw,42px);line-height:1.15;letter-spacing:-.01em}
+.title p{color:var(--mute);margin-top:8px;font-size:16px}
+
+/* services: pink section, cream cards */
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:880px;margin:0 auto}
+.s{background:var(--cream);border-radius:14px;padding:24px 26px;display:grid;grid-template-columns:1fr auto;gap:4px 14px;transition:.25s;border:1px solid transparent}
+.s:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 14px 30px rgba(150,74,58,.15)}
+.s h3{font-size:21px;line-height:1.25}
+.s .pr{font-weight:600;font-size:15px;color:var(--accent);grid-column:1}
+.s p{font-size:14.5px;color:var(--mute);grid-column:1/-1;margin-top:4px}
+.s .more{font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:4px;grid-column:1/-1;color:var(--accent);margin-top:2px}
+.s .ic{grid-column:2;grid-row:1/3;color:var(--accent);font-size:38px;align-self:start}
+
+/* about: cream */
+.about{background:var(--cream)}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.about .ph{height:440px;border-radius:220px 220px 14px 14px}
+.about h2{font-size:clamp(30px,3.6vw,42px);line-height:1.15;margin-bottom:14px}
+.about p{color:var(--mute);margin-bottom:12px}
+.pts{display:grid;gap:10px;margin:18px 0 26px;list-style:none}
+.pts li{display:flex;gap:10px;align-items:center;font-size:16px}
+.pts li i{color:var(--accent);font-style:normal}
+
+/* gallery: pink */
+.ggrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.ggrid .ph{aspect-ratio:3/4;border-radius:14px}
+
+/* booking: pink section, cream card */
+.bk{display:grid;grid-template-columns:1.2fr 1fr;gap:0;background:var(--cream);border-radius:18px;overflow:hidden;max-width:960px;margin:0 auto;box-shadow:0 24px 50px rgba(150,74,58,.14)}
+.cal{padding:30px;border-right:1px solid var(--pink2)}
+.calh{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.calh b{font-family:'Playfair Display',serif;font-size:20px;font-weight:500}
+.calh button{background:var(--pink);border:0;width:34px;height:34px;border-radius:50%;cursor:pointer;color:var(--ink);font-size:17px}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.days span{font-size:12px;color:var(--mute);padding:6px 0;font-weight:600}
+.days button{aspect-ratio:1/1;border:0;background:transparent;border-radius:50%;font-size:14px;cursor:pointer;color:var(--ink);font-family:inherit}
+.days button:hover:not(:disabled){background:var(--pink)}
+.days button.sel{background:var(--accent);color:#fff}
+.days button:disabled{color:#c9aa9f;cursor:not-allowed}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.slots button{padding:10px 4px;border:1px solid var(--pink2);background:#fff;border-radius:999px;font-size:13.5px;cursor:pointer;font-family:inherit;color:var(--ink)}
+.slots button:hover{background:var(--pink)}
+.slots button.sel{background:var(--accent);color:#fff;border-color:var(--accent)}
+.fm{padding:30px;display:grid;gap:12px;align-content:start}
+.fm h3{font-size:22px;margin-bottom:2px}
+input,select,textarea{width:100%;padding:13px 14px;border:1px solid var(--pink2);background:#fff;border-radius:10px;font-size:15px;font-family:inherit;color:var(--ink)}
+input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+.fm .btn{width:100%;padding:15px}
+.sum{font-size:14px;color:var(--mute)}
+
+/* contact: cream */
+.contact{background:var(--cream)}
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
+.cg .ic{font-size:28px;color:var(--accent);margin-bottom:8px}
+.cg h3{font-size:21px;margin-bottom:6px}
+.cg p{font-size:15.5px;color:var(--mute)}
+footer{background:var(--pink);padding:28px 0;border-top:1px solid var(--line)}
+.fr{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--mute)}
+.soc{display:flex;gap:12px}
+.soc a{width:36px;height:36px;border:1px solid var(--accent);border-radius:50%;display:grid;place-items:center;color:var(--accent);font-size:14px}
+.wa{position:fixed;right:18px;bottom:18px;background:#25d366;color:#fff;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:26px;box-shadow:0 8px 20px rgba(0,0,0,.22);z-index:60}
+
+@media(max-width:900px){
+ .sgrid{grid-template-columns:1fr}
+ .ggrid{grid-template-columns:repeat(2,1fr)}
+ .about .wrap{grid-template-columns:1fr;gap:30px}
+ .about .ph{height:340px}
+ .bk{grid-template-columns:1fr}
+ .cal{border-right:0;border-bottom:1px solid var(--pink2)}
+ .cg{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+ .wrap{padding:0 16px}
+ .nav{grid-template-columns:auto 1fr}
+ nav{display:none;position:absolute;left:0;right:0;top:72px;background:var(--pink);flex-direction:column;padding:16px;gap:12px;border-bottom:1px solid var(--line)}
+ nav.open{display:flex}
+ .burger{display:block}
+ .right .btn{padding:10px 16px;font-size:13px}
+ .logo{font-size:26px}
+ .hero{min-height:440px}
+ .hero::before{background:linear-gradient(180deg,rgba(239,211,201,.92),rgba(239,211,201,.6))}
+ .hero p{font-size:19px}
+ section{padding:52px 0}
+ .fr{justify-content:center;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* reference-style finish */
+.logo{font-style:normal;font-weight:500;font-size:28px;letter-spacing:.16em;color:var(--accent)}
+nav a{font-size:14px;letter-spacing:.02em}
+.btn,.btn.sm{border-radius:3px;text-transform:uppercase;letter-spacing:.12em;font-size:12px;font-weight:600}
+.btn{padding:15px 30px}.btn.sm{padding:12px 20px}
+.hero{min-height:560px}
+.hero h1{color:var(--accent);font-weight:500;font-size:clamp(46px,6.6vw,82px);line-height:1.02;max-width:7.5ch;letter-spacing:-.015em}
+.hero p{font-family:'Playfair Display',serif;font-style:normal;font-size:22px;max-width:26ch;margin:22px 0 32px}
+.hero .ph:not(.on)::before{content:"";position:absolute;right:16%;bottom:0;width:190px;height:330px;border-radius:95px 95px 0 0;border:7px solid #d6ab88;border-bottom:0;background:linear-gradient(#fcf6ee,#efd9cc);box-shadow:-230px 40px 0 -20px rgba(252,246,238,.55)}
+.s{border-radius:10px;border:1px solid var(--pink2)}
+.s h3{font-size:21px;font-weight:500}
+.s .ic{width:50px;height:50px;border-radius:50%;background:var(--pink);display:grid;place-items:center;font-size:26px}
+.about .ph{border-radius:230px 230px 10px 10px}
+.ggrid .ph{border-radius:999px 999px 10px 10px}
+.bk{border-radius:10px;background:var(--cream)}
+.title h2{font-weight:500}
+.fr{font-size:13px}
+@media(max-width:760px){.hero .ph:not(.on)::before{display:none}.logo{font-size:23px}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8l11 9M8.5 16l11-9"/></symbol>
+<symbol id="sparkle" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></symbol>
+<symbol id="head" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6v4c0 3.5 2.5 6 6 6s6-2.5 6-6V9a6 6 0 0 0-6-6zM6 12c3 0 5-2 6-5 1 3 3 5 6 5"/></symbol>
+<symbol id="drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+<symbol id="brush" viewBox="0 0 24 24"><path d="M4 20c3 0 4-2 4-4l8-8 3 3-8 8c-2 0-4 1-7 1zM15 6l3-3 3 3-3 3"/></symbol>
+<symbol id="crown" viewBox="0 0 24 24"><path d="M3 8l4 4 5-7 5 7 4-4-2 11H5z"/></symbol>
+<symbol id="flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.5"/><path d="M12 9.5C10 6 10.5 3 12 3s2 3 0 6.5zM14.5 12c3.5-2 6.500-1.500 6.500 0s-3 2-6.500 0zM12 14.500c2 3.500 1.500 6.500 0 6.500s-2-3 0-6.500zM9.500 12C6 14 3 13.500 3 12s3-2 6.500 0z"/></symbol>
+<symbol id="skin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.500 10h.01M15.500 10h.01M8.500 14.500c1 1.500 2.200 2 3.500 2s2.500-.5 3.500-2"/></symbol>
+<symbol id="pin" viewBox="0 0 24 24"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.500"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.500 1.500a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+</defs></svg>
+
+<header>
+ <div class="wrap nav">
+  <a class="logo" href="#">GLOWUP</a>
+  <nav id="nav">
+   <a class="on" href="#">Home</a>
+   <a href="#services">Services</a>
+   <a href="#bridal">Bridal</a>
+   <a href="#gallery">Gallery</a>
+   <a href="#contact">Contact</a>
+  </nav>
+  <div class="right"><a class="btn sm" href="#book">Book Appointment</a><button class="burger" id="bg" aria-label="Menu">&#9776;</button></div>
+ </div>
+</header>
+
+<div class="hero">
+ <div class="ph" data-src="img/salon/hero.jpg"></div>
+ <div class="wrap">
+  <h1>Elevate Your Beauty</h1>
+  <p>Discover hair, skin &amp; bridal artistry in our serene oasis.</p>
+  <a class="btn" href="#services">Explore Services</a>
+ </div>
+</div>
+
+<section id="services">
+ <div class="wrap">
+  <div class="title"><h2>Our Signature Services</h2><p>Transparent pricing, no surprises</p></div>
+  <div class="sgrid">
+   <div class="s"><h3>Haircuts &amp; Styling</h3><span class="ic"><svg class="i"><use href="#head"/></svg></span><div class="pr">Rs 300+</div><p>Cuts, blow-dry and styling shaped to your face and routine.</p><a class="more" href="#book">Learn more</a></div>
+   <div class="s"><h3>Facials</h3><span class="ic"><svg class="i"><use href="#skin"/></svg></span><div class="pr">Rs 1,200+</div><p>Deep-cleansing and glow facials for every skin type.</p><a class="more" href="#book">Learn more</a></div>
+   <div class="s"><h3>Color Services</h3><span class="ic"><svg class="i"><use href="#drop"/></svg></span><div class="pr">Rs 1,500+</div><p>Global colour, highlights and balayage with gentle formulas.</p><a class="more" href="#book">Learn more</a></div>
+   <div class="s"><h3>Skincare Treatments</h3><span class="ic"><svg class="i"><use href="#sparkle"/></svg></span><div class="pr">Rs 2,500+</div><p>Hydra facial, de-tan and clean-up for clear, fresh skin.</p><a class="more" href="#book">Learn more</a></div>
+   <div class="s"><h3>Hair Treatments</h3><span class="ic"><svg class="i"><use href="#flower"/></svg></span><div class="pr">Rs 800+</div><p>Hair spa, smoothening and repair care to restore shine.</p><a class="more" href="#book">Learn more</a></div>
+   <div class="s"><h3>Makeup Artistry</h3><span class="ic"><svg class="i"><use href="#brush"/></svg></span><div class="pr">Rs 2,000+</div><p>Party and occasion makeup with a long-lasting finish.</p><a class="more" href="#book">Learn more</a></div>
+   <div class="s" id="bridal"><h3>Bridal Hair</h3><span class="ic"><svg class="i"><use href="#scissors"/></svg></span><div class="pr">Rs 3,500+</div><p>Elegant bridal styling, trial included on request.</p><a class="more" href="#book">Learn more</a></div>
+   <div class="s"><h3>Bridal Makeup Packages</h3><span class="ic"><svg class="i"><use href="#crown"/></svg></span><div class="pr">Rs 14,999+</div><p>Makeup, hair, facial and pre-bridal care in one package.</p><a class="more" href="#book">Learn more</a></div>
+  </div>
+ </div>
+</section>
+
+<section class="about">
+ <div class="wrap">
+  <div class="ph" data-src="img/salon/about.jpg"></div>
+  <div>
+   <h2>A calm space made for you</h2>
+   <p>GlowUp is a modern salon where skilled stylists and premium products come together in a relaxed setting.</p>
+   <ul class="pts"><li><i>&#10022;</i> Experienced, trained stylists</li><li><i>&#10022;</i> Premium, skin-safe products</li><li><i>&#10022;</i> Hygienic, single-use tools</li></ul>
+   <a class="btn" href="#book">Book Your Visit</a>
+  </div>
+ </div>
+</section>
+
+<section class="gal" id="gallery">
+ <div class="wrap">
+  <div class="title"><h2>Inside GlowUp</h2><p>A look at our space and our work</p></div>
+  <div class="ggrid">
+   <div class="ph" data-src="img/salon/g1.jpg"></div><div class="ph" data-src="img/salon/g2.jpg"></div><div class="ph" data-src="img/salon/g3.jpg"></div><div class="ph" data-src="img/salon/g4.jpg"></div>
+  </div>
+ </div>
+</section>
+
+<section class="book" id="book">
+ <div class="wrap">
+  <div class="title"><h2>Book Your Experience</h2><p>Ready for your transformation? Select a date, time and service below. We confirm on WhatsApp.</p></div>
+  <div class="bk">
+   <div class="cal">
+    <div class="calh"><button id="pv" type="button" aria-label="Previous month">&#8249;</button><b id="mt"></b><button id="nx" type="button" aria-label="Next month">&#8250;</button></div>
+    <div class="days" id="dg"></div>
+    <div class="slots" id="sl"></div>
+   </div>
+   <form class="fm" id="bf">
+    <h3>Your details</h3>
+    <select id="s"><option>Haircuts &amp; Styling</option><option>Facials</option><option>Color Services</option><option>Skincare Treatments</option><option>Hair Treatments</option><option>Makeup Artistry</option><option>Bridal Hair</option><option>Bridal Makeup Package</option></select>
+    <input id="n" placeholder="Name" required>
+    <input id="p" type="tel" placeholder="Phone" required>
+    <input id="m" placeholder="Any request (optional)">
+    <div class="sum" id="sm">Pick a date and time</div>
+    <button class="btn" type="submit">Book Now</button>
+   </form>
+  </div>
+ </div>
+</section>
+
+<section class="contact" id="contact">
+ <div class="wrap">
+  <div class="cg">
+   <div><div class="ic"><svg class="i"><use href="#pin"/></svg></div><h3>Find us</h3><p>8 Fashion Street, Your City, 000000</p></div>
+   <div><div class="ic"><svg class="i"><use href="#clock"/></svg></div><h3>Hours</h3><p>Mon to Sun<br>10 AM to 8 PM</p></div>
+   <div><div class="ic"><svg class="i"><use href="#phone"/></svg></div><h3>Call us</h3><p>+91 00000 00000</p></div>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <div class="wrap fr">
+  <span>&copy; 2026 GlowUp Salon &amp; Spa. All rights reserved.</span>
+  <div class="soc"><a href="#" aria-label="Instagram">in</a><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="Pinterest">p</a></div>
+ </div>
+</footer>
+
+<a class="wa" href="https://wa.me/910000000000" aria-label="WhatsApp"><svg class="i"><use href="#chat"/></svg></a>
+
+<script>
+var WA_NUMBER="910000000000"; // CHANGE: salon WhatsApp (country code + number)
+document.querySelectorAll('.ph[data-src]').forEach(function(el){var i=new Image();i.onload=function(){el.style.backgroundImage='url('+el.dataset.src+')';el.classList.add('on')};i.src=el.dataset.src});
+var nav=document.getElementById('nav');document.getElementById('bg').onclick=function(){nav.classList.toggle('open')};
+nav.querySelectorAll('a').forEach(function(a){a.onclick=function(){nav.classList.remove('open')}});
+var M=["January","February","March","April","May","June","July","August","September","October","November","December"];
+var now=new Date(),cy=now.getFullYear(),cm=now.getMonth(),selD=null,selT=null;
+var TS=["10:00 AM","11:30 AM","01:00 PM","02:30 PM","04:00 PM","06:00 PM"];
+function sum(){document.getElementById('sm').textContent=(selD?selD.toDateString():"Pick a date")+(selT?" at "+selT:" and a time")}
+function cal(){document.getElementById('mt').textContent=M[cm]+" "+cy;var g=document.getElementById('dg');g.innerHTML="";
+ "SMTWTFS".split("").forEach(function(d){g.insertAdjacentHTML('beforeend','<span>'+d+'</span>')});
+ var f=new Date(cy,cm,1).getDay(),dm=new Date(cy,cm+1,0).getDate(),t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+ for(var i=0;i<f;i++)g.insertAdjacentHTML('beforeend','<span></span>');
+ for(var d=1;d<=dm;d++){var dt=new Date(cy,cm,d),b=document.createElement('button');b.type="button";b.textContent=d;b.disabled=dt<t0;
+  if(selD&&selD.getTime()==dt.getTime())b.className="sel";
+  (function(dt){b.onclick=function(){selD=dt;cal();sum()}})(dt);g.appendChild(b)}}
+document.getElementById('pv').onclick=function(){cm--;if(cm<0){cm=11;cy--}cal()};
+document.getElementById('nx').onclick=function(){cm++;if(cm>11){cm=0;cy++}cal()};
+var sl=document.getElementById('sl');TS.forEach(function(t){var b=document.createElement('button');b.type="button";b.textContent=t;b.onclick=function(){selT=t;[].forEach.call(sl.children,function(x){x.classList.remove('sel')});b.classList.add('sel');sum()};sl.appendChild(b)});
+cal();
+document.getElementById('bf').addEventListener('submit',function(e){e.preventDefault();
+ if(!selD||!selT){document.getElementById('sm').textContent="Please choose a date and a time first";return}
+ var m="New Salon Appointment%0AName: "+encodeURIComponent(n.value)+"%0APhone: "+encodeURIComponent(p.value)+"%0AService: "+encodeURIComponent(s.value)+"%0ADate: "+encodeURIComponent(selD.toDateString())+"%0ATime: "+encodeURIComponent(selT)+"%0ARequest: "+encodeURIComponent(document.getElementById('m').value||"N/A");
+ window.open("https://wa.me/"+WA_NUMBER+"?text="+m,"_blank")});
+</script>
+</body>
+</html>
